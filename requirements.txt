@@ -1,0 +1,12 @@
+streamlit
+numpy
+pandas
+Pillow
+joblib
+plotly
+matplotlib
+opencv-python-headless
+scikit-image
+shap
+xgboost
+tensorflow == 2.12.0
