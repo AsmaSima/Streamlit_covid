@@ -9,4 +9,4 @@ opencv-python-headless
 scikit-image
 shap
 xgboost
-tensorflow == 2.12.0
+tensorflow==2.12.0
