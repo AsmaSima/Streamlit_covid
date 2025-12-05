@@ -317,9 +317,9 @@ if page == "Covid-19":
                  use_container_width=True)
     with col2:
         st.image("Images/covid_monde.png",
-                 caption="Nombre total décès causés par le Covid-19 dans le monde",
+                 caption="Nombre total de décès causés par le Covid-19 dans le monde",
                  use_container_width=True)
-    st.write("Au printemps 2025, on dénombre 168 000 décès en France et 7 089 989 à l'échelle du monde.")
+    st.write("Au printemps 2025, on dénombre 168 000 décès en France et 7 089 989 à l'échelle mondiale.")
         
     st.subheader("Avantages d'un modèle")
     st.write("""
@@ -373,7 +373,7 @@ if page == "Exploration des données":
 
     st.subheader("Répartition des données par catégorie")
     st.write("""
-            - Dispartié dans le nombre d'images par catégorie
+            - Disparté dans le nombre d'images par catégorie
             - Nombre d'images et nombre de masques égaux
             - Pas de fichiers manquants ou corrompu
              """)
@@ -1160,6 +1160,13 @@ if page == "A propos":
     st.write("Asma KERKACHE")
     st.write("Maamar BENHENNI")
     st.write("Richard TONNANG")
+
+    st.subheader("Remerciements")
+    st.write("""
+            - Toutes les équipes de Datascientest
+            - Chef de cohorte : Vincent
+            - Mentor de projet : Antoine
+             """)
 
     st.subheader("Bibliographie")
     st.write("[1] T. Rahman, M. Chowdhury, et A. Khandakar, « Covid-19 radiography database ». 2021. "
