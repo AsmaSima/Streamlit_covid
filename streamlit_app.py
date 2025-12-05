@@ -603,8 +603,9 @@ if page == "XGBoost":
                 Après optimisation, les paramètres retenus sont :
                 - _max_depth_ = 6
                 - Facteur d'amplification du poids de la classe Covid-19 = 1.5
-                L'entraînement final sur 300 arbres conduit aux résultats suivants :
+                - Seuil = 0.412406
                 """)
+        st.write("L'entraînement final sur 300 arbres conduit aux résultats suivants :")
     
         categories = ["Normal","Covid-19","Autres"]
         score_avant = {"Normal" : {"Précision":80.7,"Rappel":83.2,"F1-Score":81.9},
