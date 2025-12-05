@@ -539,11 +539,15 @@ if page == "XGBoost":
 
         st.subheader("Exploration visuelle : CLAHE & HOG")
         img_gray = cv2.imread("Datas/COVID/images/COVID-32.png", cv2.IMREAD_GRAYSCALE)
+        mask = cv2.imread("Datas/COVID/masks/COVID-32.png", cv2.IMREAD_GRAYSCALE)
+        mask_resize = cv2.resize(mask,(299,299))
 
-        st.image(img_gray, caption="Image originale",
-                 channels="GRAY",
-                 width=350)
-        colx, coly = st.columns(2)
+        col1,col2,col3 = st.columns([1,2,1])
+        with col2:
+            st.image(img_gray, caption="Image originale",
+                    channels="GRAY",
+                    width=350)
+        colx, coly, colz = st.columns(3)
         with colx:
             clip_limit = st.slider("Clip Limit", 1.0, 5.0, 2.0, 1.0)
             tile_size = st.slider("tileGridSize", 4, 16, 8, 2)
@@ -551,15 +555,25 @@ if page == "XGBoost":
             clahe = cv2.createCLAHE(clipLimit=clip_limit, tileGridSize=(tile_size,tile_size))
             img_clahe = clahe.apply(img_gray)
         with coly:
+            show_mask = st.checkbox("Ajouter le masque", value=False)
+            
+        with colz:
             show_hog = st.checkbox("Afficher la représentation HOG", value=False)
 
-        col1, col2 = st.columns(2)
+        col1, col2, col3 = st.columns(3)
         with col1:
             st.image(img_clahe, caption=f"Après CLAHE (clipLimit={clip_limit}, tileGridSize=({tile_size}x{tile_size})",
                      channels="GRAY", use_container_width=True)
         with col2:
+            if show_mask:
+                img_work = cv2.bitwise_and(mask_resize, img_clahe)
+                st.image(img_work, caption="Image avec masque appliqué", use_container_width=True)
+            else:
+                img_work = img_clahe
+                st.info("Cochez la case pour appliquer le masque")
+        with col3:
             if show_hog:
-                _, hog_img = hog(img_clahe,
+                _, hog_img = hog(img_work,
                                  orientations=9,
                                  pixels_per_cell=(12,12),
                                  cells_per_block=(2,2),
@@ -844,7 +858,9 @@ if page == "DenseNet121":
         st.image("Images/roc_densenet121.png",
                 caption="Courbe ROC/AUC du modèle DenseNet121",
                 use_container_width=True)
-        st.write("Le Grad-CAM suivant permet de voir comment la prise de décision est effectuée par le modèle.")
+        
+        st.subheader("Echantillon d'images Covid-19 mal classées")
+        st.image("Images/erreurs_densenet121.png", use_container_width=True)
 
 
 # ==== PAGE INCEPTIONV3 ====
@@ -894,25 +910,34 @@ if page == "InceptionV3":
                               margin=dict(l=0,r=0,t=30,b=0))
         st.plotly_chart(fig, use_container_width=True)
 
-        st.subheader("Exploration visuelle : CLAHE & HOG")
+        st.subheader("Exploration visuelle : CLAHE & Masque")
         img_gray = cv2.imread("Datas/COVID/images/COVID-32.png", cv2.IMREAD_GRAYSCALE)
+        mask = cv2.imread("Datas/COVID/masks/COVID-32.png", cv2.IMREAD_GRAYSCALE)
+        mask_resize = cv2.resize(mask, (299,299))
 
-        col1,col2,col3 = st.columns([1,2,1])
-        with col2:
+        col1,col2 = st.columns([2,1])
+        with col1:
             clip_limit = st.slider("Clip Limit", 1.0, 5.0, 2.0, 1.0)
             tile_size = st.slider("tileGridSize", 4, 16, 8, 2)
             
             clahe = cv2.createCLAHE(clipLimit=clip_limit, tileGridSize=(tile_size,tile_size))
             img_clahe = clahe.apply(img_gray)
+        with col2:
+            show_mask = st.checkbox("Ajouter le masque")
 
-        col1,col2 = st.columns(2)
+        col1,col2, col3 = st.columns(3)
         with col1:
             st.image(img_gray, caption="Image originale",
-                 channels="GRAY",
-                 width=350)
+                 channels="GRAY", use_container_width=True)
         with col2:
             st.image(img_clahe, caption=f"Après CLAHE (clipLimit={clip_limit}, tileGridSize=({tile_size}x{tile_size})",
                      channels="GRAY", use_container_width=True)
+        with col3:
+            if show_mask:
+                img_mask = cv2.bitwise_and(mask_resize, img_clahe)
+                st.image(img_mask, caption="Image avec masque appliqué", use_container_width=True)
+            else:
+                st.info("Cochez la case pour appliquer le masque")
 
     with onglet2:
         st.header("Entraînement")
@@ -988,6 +1013,8 @@ if page == "InceptionV3":
         st.image("Images/roc_auc_inceptionv3.png",
                 caption="Courbe ROC/AUC du modèle DenseNet121",
                 use_container_width=True)
+        st.subheader("Echantillon d'images Covid-19 mal classées")
+        st.image("Images/erreurs_inceptionv3.png", use_container_width=True)
 
 # ==== PAGE TESTER LE MODELE ====
 if page == "Tester les modèles":
