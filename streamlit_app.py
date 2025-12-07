@@ -1098,21 +1098,29 @@ if page == "Tester les modèles":
                     st.subheader("SHAP (force plot)")
                     explainer = shap.TreeExplainer(model)
                     shap_values = explainer.shap_values(x_scaled)
-                    shap_vals_for_class = shap_values[0,:,pred_class]
-                    expected_value = explainer.expected_value[pred_class]
 
-                    shap.force_plot(expected_value,
+                    class_names=["Sain","Covid-19","Autres"]
+                    n_classes = shap_values.shape[2]
+
+                    for i, class_name in enumerate(class_names):
+                        st.markdown(f"### Classe : **{class_name}**")
+
+                        shap_vals_for_class = shap_values[0,:,i]
+                        expected_value = explainer.expected_value[i]
+
+                        shap.force_plot(expected_value,
                                     shap_vals_for_class,
                                     x_scaled[0,:],
                                     matplotlib=True,
                                     show=False)
-                    fig = plt.gcf()
-                    ax = plt.gca()
+                        fig = plt.gcf()
+                        ax = plt.gca()
 
-                    fig.patch.set_facecolor("#E8F0F8")
-                    ax.set_facecolor("#E8F0F8")
+                        fig.patch.set_facecolor("#E8F0F8")
+                        ax.set_facecolor("#E8F0F8")
 
-                    st.pyplot(fig)
+                        st.pyplot(fig)
+                        plt.clf()
 
             else:
                 classes = ["Covid-19", "Opacité pulmonaire", "Normal", "Pneumonie Virale"]
