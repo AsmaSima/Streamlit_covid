@@ -1,6 +1,8 @@
 numpy==1.26.4
 opencv-python-headless==4.12.0
 tensorflow==2.15.0
-torch==2.9.1+cpu
-torchvision==0.24.1+cpu
-torchvision==0.24.1+cpu  
+torch
+torchvision
+streamlit
+pillow
+huggingface-hub
