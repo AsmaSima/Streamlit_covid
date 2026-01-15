@@ -1,0 +1,13 @@
+streamlit
+numpy
+pandas
+Pillow
+plotly
+matplotlib
+opencv-python-headless
+scikit-image
+tensorflow
+torch
+huggingface_hub
+scikit-learn
+wordcloud
