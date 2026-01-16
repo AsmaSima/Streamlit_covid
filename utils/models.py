@@ -5,7 +5,7 @@ from huggingface_hub import hf_hub_download
 def load_inception_model():
     from tensorflow.keras.models import load_model
     model_path = hf_hub_download(repo_id="AsmaSima/inception_v3_covid",
-                                 filename="inceptionV3_covid.keras")
+                                 filename="inceptionV3_covid.h5")
     return load_model(model_path, compile=False)
 
 @st.cache_resource(show_spinner="Chargement du modèle de masquage...")
