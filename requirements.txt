@@ -2,9 +2,9 @@ numpy==1.26.4
 opencv-python-headless
 tensorflow-cpu==2.15.0
 keras==2.15
-torch==2.9.1+cpu
-torchvision==0.24.1+cpu
---find-links https://download.pytorch.org/whl/torch_stable.html
+torch
+torchvision
+--extra-index-url https://download.pytorch.org/whl/cpu
 streamlit
 Pillow
 huggingface-hub
