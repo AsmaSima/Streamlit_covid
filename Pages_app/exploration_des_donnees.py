@@ -11,9 +11,9 @@ def run():
     st.title("Exploration des données")
     st.write("""
              Le jeu de données est composé d'images radiographiques et des masques correspondants.
-             Les données sont issues de plusieurs sources publiques et regrouper sur Kaggle.
+             Les données sont issues de plusieurs sources publiques et regroupées sur Kaggle.
              [<sup>[1]</sup>](https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database/data)
-             La structure de l'organisation de ces dernière est la suivante :
+             La structure de l'organisation de ces dernières est la suivante :
              """, unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
@@ -55,11 +55,11 @@ def run():
     st.write("""
             - Disparté dans le nombre d'images par catégorie
             - Nombre d'images et nombre de masques égaux
-            - Pas de fichiers manquants ou corrompu
+            - Pas de fichiers manquants ou corrompus
              """)
     st.plotly_chart(fig, use_container_width=True)
 
-    st.subheader("Taille et formats des fichiers")
+    st.subheader("Taille et format des fichiers")
     rows = [categories[:2], categories[2:]]
     for row in rows:
         cols = st.columns(2)

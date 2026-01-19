@@ -51,8 +51,8 @@ def run():
             st.header("Entraînement")
             st.write("""
                     Pour concevoir le modèle de segmentation, nous avons retenu PyTorch comme framework principal, mieux adapté à la problématique abordée.
-                    L'architechture repose sur un encodeur Resnet18 pré-entraîné sur ImageNet, afin de bénéficier d'un apprentissage par transfert.
-                     Les images ont été redimensionnées a une taille 192x192 pixels.
+                    L'architecture repose sur un encodeur Resnet18 pré-entraîné sur ImageNet, afin de bénéficier d'un apprentissage par transfert.
+                     Les images ont été redimensionnées à une taille 192x192 pixels.
                     Ces choix ont été effectués à l'issue de plusieurs tests et correspondent au meilleur compromis entre performance et temps de calcul.
                     Les principaux paramètres d'entraînement sont les suivants:
                     - Optimiseur : Adam
@@ -110,8 +110,8 @@ def run():
             st.write("""
                     **Interprétation :**
                     - La diminution progressive de la loss indique une convergence stable du modèle.
-                    - Les score Dice élevés et proches entre entraînement et validation suggèrent une bonne généralisation,
-                     sans sur-apprentissage notable sur les données de valisation.
+                    - Les scores Dice élevés et proches entre entraînement et validation suggèrent une bonne généralisation,
+                     sans sur-apprentissage notable sur les données de validation.
                      """)
             
         with onglet3:

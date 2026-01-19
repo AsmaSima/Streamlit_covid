@@ -12,9 +12,9 @@ def run():
     st.write("""
             Cette partie est inspirée du travail réalisé par Alqatani _et al._
              [<sup>[2]</sup>](https://www.techscience.com/iasc/v35n2/48867/html).
-            Ils utilisent le modèle InceptionV4 pour la détection du Covid-19 à partir de radiographies thoraciques,
+            Ils utilisent le modèle Inception V4 pour la détection du Covid-19 à partir de radiographies thoraciques,
             qui a conduit à d'excellents résultats.
-            Nous avons, donc, adapté leur méthodologie à notre jeu de données sur le modèle InceptionV3
+            Nous avons, donc, adapté leur méthodologie à notre jeu de données sur le modèle Inception V3
              [<sup>[3]</sup>](https://arxiv.org/abs/1512.00567).
             """, unsafe_allow_html=True)
 
@@ -221,7 +221,7 @@ def run():
                  de 84%, confirmant la capacité du modèle à généraliser sur des données non vues.
 
                  Les métriques de précision, rappel et F1-score sont homogènes entre les classes Sain, Covid-19 et Autres,
-                 indiquand un comportement stable du modèle et l'absence de biais marqué en faveur d'une classe
+                 indiquant un comportement stable du modèle et l'absence de biais marqués en faveur d'une classe
                  spécifique.
                  """)
         data={"Catégories" : ["Sain","Covid-19","Autres"],

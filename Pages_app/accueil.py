@@ -11,7 +11,7 @@ def run():
             Plusieurs entraînements ont été réalisés afin de comparer différentes approches (pré-traitement, masquage
              automatique, choix des modèles et des paramètres).
 
-            Utilisez le menu latéral pour accéder aux différetes sections :
+            Utilisez le menu latéral pour accéder aux différentes sections :
             - L'exploration du jeu de données
             - La modélisation du masquage automatique
             - La modélisation de classification
@@ -22,8 +22,9 @@ def run():
              Le modèle est en cours d'amélioration continue. Les performances présentées correspondent
              à l'état actuel des expérimentations.
              """)
+    
     st.write("""
              **Avertissement** : Cette application est fournie à des fins pédagogiques et expérimentales uniquement.
-             Elle ne constitue en aucun cas un outils de diagnostic médical et ne doit pas se substituer à l'avis d'un
+             Elle ne constitue en aucun cas un outil de diagnostic médical et ne doit pas se substituer à l'avis d'un
              professionnel de santé.
              """)
